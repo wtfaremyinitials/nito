@@ -33,6 +33,8 @@
 
 		// set static members
 		var base = settings.base;
+		base = base instanceof $ ? base.html() : base;
+
 		Comp.base = $( isArray( base ) ? base.join( '\n' ) : base )[ 0 ];
 		Comp.identify = settings.identify;
 		Comp.id = settings.id || ++$.nitoId;
