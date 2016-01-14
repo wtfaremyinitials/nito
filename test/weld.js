@@ -40,4 +40,14 @@ QUnit.module( 'weld', function () {
 
 	} );
 
+	QUnit.test( 'attr', function ( assert ) {
+
+		var $el = $( '<div><a class="link"></a></div>' );
+
+		$el.weld( { path: '/helloworld', title: 'Hello World' }, { path: '.link[href]', title: '.link' } );
+
+		assert.equal( $el.html(), '<a class="link" href="/helloworld">Hello World</a>' );
+
+	} );
+
 } );

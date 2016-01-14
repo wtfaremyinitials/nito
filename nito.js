@@ -311,7 +311,16 @@
 
 			each( data, function ( name, value ) {
 				var selector = selectors[ name ] || ( '.' + name );
-				$set.find( selector ).weld( value );
+
+				var match = selector.match(/^(.*)\[(\w+)\]$/)
+				if(match) {
+					var attr = match[2];
+					selector = match[1];
+					$set.find( selector ).attr( attr, value );
+				} else {
+					$set.find( selector ).weld( value );
+				}
+
 			} );
 
 			return this;
